@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <title>Calculadora de Investimentos - IFCE Finanças</title>
+</head>
+<body>
+
+    <nav class="navs">
+        <ul class="navbar">
+            <li class="item">
+                <a class="nav-link" href="#intro">ÍNICIO</a>
+            </li>
+            <li class="item">
+                <a class="nav-link" href="#calculator">CALCULADORAS</a>
+            </li>
+            <li class="item">
+                <a class="nav-link" href="http://www.tesouro.gov.br/-/tesouro-direto-indicadores" target="_blank">ÍNDICES DE TESOURO DIRETO</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <h2  id="titulo-intro" class="titulo-intro">Conheça os Fundamentos do Investimento Financeiro</h2>
+
+        <section class="intro" id="intro">
+            <p>Investir é uma estratégia financeira essencial para alcançar seus objetivos de longo prazo. Existem duas principais categorias de investimentos: renda fixa e renda variável.</p>
+            
+            <h3>Renda Fixa</h3>
+            <p>Investimentos em renda fixa são conhecidos por sua previsibilidade e menor risco. Eles incluem títulos como CDBs, Tesouro Direto e poupança. Esses investimentos oferecem retornos consistentes ao longo do tempo.</p>
+            
+            <h3>Renda Variável</h3>
+            <p>Por outro lado, investimentos em renda variável, como ações e fundos imobiliários, apresentam um risco maior, mas também podem trazer retornos significativos. Eles estão sujeitos às flutuações do mercado e requerem uma análise mais aprofundada.</p>
+            
+            <h3>Juros Simples e Compostos</h3>
+            <p>Os juros são um componente fundamental de qualquer investimento. Os juros simples são calculados apenas sobre o valor inicial investido. Já os juros compostos levam em consideração o acúmulo de juros sobre juros, resultando em crescimento exponencial ao longo do tempo.</p>
+            
+            <h3>Importância da Reserva de Emergência</h3>
+            <p>Antes de começar a investir, é crucial criar uma reserva de emergência. Essa reserva deve ser suficiente para cobrir despesas essenciais por alguns meses em caso de imprevistos financeiros. Isso garante que você não precise resgatar seus investimentos prematuramente.</p>
+            
+            <p>Explorando as calculadoras abaixo, você pode entender melhor como seus investimentos podem crescer ao longo do tempo e como escolher a melhor estratégia para seus objetivos financeiros.</p>
+        </section>
+
+        <h1>Calculadoras Financeiras</h1>
+
+        <!-- Calculadora de Juros Compostos -->
+        <section class="calculator" id="calculator">
+            <h2 id="titulo-calculadora">Calculadora de Juros Compostos:</h2>
+            <div class="form-group">
+                <label for="initial-amount-compound">Valor Inicial:</label>
+                <input type="number" class="input" id="initial-amount-compound" value="1000" oninput="calculateCompound()">
+            </div>
+            <div class="form-group">
+                <label for="monthly-amount-compound">Valor Mensal:</label>
+                <input type="number" class="input"  id="monthly-amount-compound" value="2000" oninput="calculateCompound()">
+            </div>
+            <div class="form-group">
+                <label for="interest-rate-compound">Taxa de Juros ao Mês:</label>
+                <input type="number" class="input"  id="interest-rate-compound" value="0.5" oninput="calculateCompound()">
+            </div>
+            <div class="form-group">
+                <label for="months-compound">Período em Meses:</label>
+                <input type="number" class="input"  id="months-compound" value="10" oninput="calculateCompound()">
+            </div>
+            <div class="form-group">
+                <label for="tax-compound">Taxa de Imposto (%):</label>
+                <input type="number" class="input" id="tax-compound" value="20" oninput="calculateCompound()">
+            </div>
+            <section class="results">
+                <h3>Resultados Juros Compostos:</h3>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Total Investido:</th>
+                            <td id="total-invested-compound"></td>
+                        </tr>
+                        <tr>
+                            <th>Total Final:</th>
+                            <td id="total-final-compound"></td>
+                        </tr>
+                        <tr>
+                            <th>Rendimento Bruto:</th>
+                            <td id="gross-earnings-compound"></td>
+                        </tr>
+                        <tr>
+                            <th>Rendimento Líquido:</th>
+                            <td id="net-earnings-compound"></td>
+                        </tr>
+                        <tr>
+                            <th>Imposto:</th>
+                            <td id="tax-compound-result"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
+
+        <!-- Calculadora de Juros Simples -->
+        <section class="calculator">
+            <h2>Calculadora de Juros Simples:</h2>
+            <div class="form-group">
+                <label for="initial-amount-simple">Capital Inicial:</label>
+                <input type="number" class="input"  id="initial-amount-simple" value="1000" oninput="calculateSimple()">
+            </div>
+            <div class="form-group">
+                <label for="interest-rate-simple">Taxa de Juros ao Mês:</label>
+                <input type="number" class="input"  id="interest-rate-simple" value="0.5" oninput="calculateSimple()">
+            </div>
+            <div class="form-group">
+                <label for="months-simple">Período em Meses:</label>
+                <input type="number" class="input"  id="months-simple" value="12" oninput="calculateSimple()">
+            </div>
+            <section class="results">
+                <h3>Resultados Juros Simples:</h3>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Montante:</th>
+                            <td id="final-amount-simple"></td>
+                        </tr>
+                        <tr>
+                            <th>Juros Totais:</th>
+                            <td id="total-interest-simple"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
+    </div>
+
+    <script>
+
+        const navbarHeight = document.querySelector('.navs').offsetHeight;
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                const targetOffset = targetSection.offsetTop - navbarHeight;
+
+                window.scrollTo({
+                    top: targetOffset,
+                    behavior: 'smooth'
+                });
+
+                // Rolando um pouco acima da seção para evitar que o título seja coberto pela barra de navegação
+                window.scrollBy(0, -navbarHeight);
+            });
+        });
+
+        function formatCurrency(value) {
+            const formatter = new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+
+            return formatter.format(value);
+        }
+
+        // Funções para Juros Compostos
+        function calculateCompound() {
+            const initialAmount = parseFloat(document.getElementById('initial-amount-compound').value);
+            const monthlyAmount = parseFloat(document.getElementById('monthly-amount-compound').value);
+            const interestRate = parseFloat(document.getElementById('interest-rate-compound').value) / 100;
+            const months = parseFloat(document.getElementById('months-compound').value);
+            
+            let totalInvested = initialAmount;
+            let futureValue = initialAmount;
+        
+            for (let i = 1; i <= months; i++) {
+                futureValue = futureValue * (1 + interestRate) + monthlyAmount;
+                totalInvested += monthlyAmount;
+            }
+        
+            const grossEarnings = futureValue - totalInvested;
+            
+            const taxRate = parseFloat(document.getElementById('tax-compound').value) / 100; // Convertendo para decimal
+            let totalTax = 0;
+            
+            // Calcula o imposto sobre cada mês e acumula o total
+            for (let i = 1; i <= months; i++) {
+                const monthlyInterest = (initialAmount + totalInvested) * interestRate;
+                const monthlyTax = monthlyInterest * taxRate;
+                totalTax += monthlyTax;
+            }
+            
+            const netEarnings = grossEarnings - totalTax;
+        
+            // Atualiza os elementos de resultado
+            document.getElementById('tax-compound-result').textContent = formatCurrency(totalTax);
+            document.getElementById('total-invested-compound').textContent = formatCurrency(totalInvested);
+            document.getElementById('total-final-compound').textContent = formatCurrency(futureValue);
+            document.getElementById('gross-earnings-compound').textContent = formatCurrency(grossEarnings);
+            document.getElementById('net-earnings-compound').textContent = formatCurrency(netEarnings);
+        }
+        
+
+        // Funções para Juros Simples
+        function calculateSimple() {
+            const initialAmount = parseFloat(document.getElementById('initial-amount-simple').value);
+            const interestRate = parseFloat(document.getElementById('interest-rate-simple').value) / 100;
+            const months = parseInt(document.getElementById('months-simple').value);
+            
+            const finalAmount = initialAmount * (1 + interestRate * months);
+            const totalInterest = finalAmount - initialAmount;
+            
+            document.getElementById('final-amount-simple').textContent = formatCurrency(finalAmount);
+            document.getElementById('total-interest-simple').textContent = formatCurrency(totalInterest);
+        }
+
+        // Chamadas iniciais para cálculos
+        calculateCompound();
+        calculateSimple();
+    </script>
+
+    <style>
+        /* Reset de estilos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Estilos globais */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 10px;
+        }
+
+        .navs {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #ccc;
+            padding: 10px 0;
+        }
+
+        .navbar {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .nav-link {
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .intro {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .titulo-intro {
+            margin-top: 50px;
+        }
+
+        .intro h2, .intro h3 {
+            margin-bottom: 10px;
+        }
+
+        .intro p {
+            margin-bottom: 15px;
+        }
+
+        .calculator {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        .input {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding: 5px;
+            outline: none;
+            font-size: 110%;
+        }
+
+        .calculator .form-group {
+            display: grid;
+            grid-template-columns: 2fr 2fr;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .results {
+            margin-top: 20px;
+            font-size: 110%;
+        }
+
+        .results table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .results th, .results td {
+            padding: 5px 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+        }
+
+    </style>
+
+</body>
+</html>
