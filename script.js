@@ -108,7 +108,7 @@ function calculateCompound() {
     // Calcular o investimento como 20% da renda familiar
     const investments = 0.2 * monthlyIncome;
 
-    let totalInvested = investments * months
+    let totalInvested = investments * months;
     let totalFinal = totalInvested;
 
     for (let i = 0; i < months; i++) {
