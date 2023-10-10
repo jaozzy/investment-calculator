@@ -1,0 +1,166 @@
+
+    /* Reset de estilos */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    /* Estilos globais */
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    h1, h2, h3 {
+        margin-bottom: 10px;
+    }
+
+    .navs {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #ccc;
+        padding: 10px 0;
+    }
+
+    .navbar {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .nav-link {
+        color: black;
+        font-weight: bold;
+        text-decoration: none;
+        margin: 0 15px;
+    }
+
+    .intro {
+        border: 1px solid #ccc;
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .titulo-intro {
+        margin-top: 50px;
+    }
+
+    .intro h2, .intro h3 {
+        margin-bottom: 10px;
+    }
+
+    .intro p {
+        margin-bottom: 15px;
+    }
+
+    .calculator {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: white;
+        border-radius: 5px;
+    }
+
+    .manager {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: white;
+        border-radius: 5px;
+    }
+
+    .input {
+        border: none;
+        border-bottom: 1px solid #ccc;
+        padding: 5px;
+        outline: none;
+        font-size: 110%;
+    }
+
+    .calculator .form-group {
+        display: grid;
+        grid-template-columns: 2fr 2fr;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .results {
+        margin-top: 20px;
+        font-size: 110%;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    th, td {
+        padding: 1px 80px;
+    }
+
+    .results th, .results td {
+        padding: 5px 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    github-link {
+        display: block;
+        margin-bottom: 10px;
+    }
+        
+    .github-link img {
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+    }
+
+    .footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #ccc;
+    }
+
+    .credits {
+        font-size: 14px;
+        color: black;
+        font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+        .container {
+            padding: 10px;
+        }
+
+        .footer {
+            font-size: 12px;
+            padding-bottom: 30px;
+        }
+    }
