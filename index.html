@@ -173,7 +173,36 @@
                 </table>
             </section>
         </section>
-    </div>
+
+        <section class="tesouro">
+            <h1>Investimento em Tesouro Selic</h1>
+            <div class="form-group">
+                <label for="months-tesouro">Período em Meses:</label>
+                <input type="number" class="input"  id="months-tesouro" value="12" oninput="calculateSelic()">
+            </div>
+        
+            <section class="results">
+                <h3>Resultados Investimento na Taxa Selic:</h3>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Total Investido:</th>
+                            <td id="total-invested-selic"></td>
+                        </tr>
+                        <tr>
+                            <th>Total Retorno:</th>
+                            <td id="total-retorno-selic"></td>
+                        </tr>
+                        <tr>
+                            <th>Total Lucro:</th>
+                            <td id="total-lucro-selic"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
+
+    </div>    
 
     <footer class="footer">
         <p class="credits">Desenvolvido por: João Pedro, 202. 2023.</p>

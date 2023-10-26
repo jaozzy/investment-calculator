@@ -131,6 +131,41 @@
         border-bottom: 1px solid #ccc;
     }
 
+    .tesouro {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: white;
+        border-radius: 5px;
+    }
+    
+    .tesouro .form-group {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    .tesouro .results {
+        margin-top: 20px;
+        font-size: 110%;
+    }
+    
+    .tesouro table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+    
+    .tesouro th, .tesouro td {
+        padding: 5px 10px;
+        border-bottom: 1px solid #ccc;
+    }
+    
+
     github-link {
         display: block;
         margin-bottom: 10px;

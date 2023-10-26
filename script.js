@@ -49,8 +49,12 @@ function updateFinancialPlan() {
     const investments = 0.2 * monthlyIncome; // Calcula automaticamente os 20% da renda familiar como investimento
 
     // Exibir resultados no plano financeiro
+    document.getElementById('pib-value').textContent =  isNaN(pib) ? 'R$ 0,00' : `${formatCurrency(pib)}`;
+    document.querySelector('#despesase').textContent =  isNaN(essentialExpenses) ? 'R$ 0,00' : `${formatCurrency(essentialExpenses)}`;
+    document.querySelector('#despesasp').textContent =  isNaN(personalExpenses) ? 'R$ 0,00' : `${formatCurrency(personalExpenses)}`;
+    document.querySelector('#investimentos').textContent = isNaN(investments) ? 'R$ 0,00' : `${formatCurrency(investments)}`;
     document.getElementById('pib-value').textContent = `${formatCurrency(pib)}`;
-    document.querySelector('#despesase').textContent = `${formatCurrency(essentialExpenses)}`;
+    document.querySelector('#despesase').textContent = isNaN(essentialExpenses) ?  'R$ 0,00' : `${formatCurrency(essentialExpenses)}`;
     document.querySelector('#despesasp').textContent = `${formatCurrency(personalExpenses)}`;
     document.querySelector('#investimentos').textContent = `${formatCurrency(investments)}`;
     document.getElementById('financial-plan').style.display = 'block';
@@ -94,7 +98,12 @@ form.addEventListener('submit', function (event) {
     // Calcular e exibir PIB per capita
     updateFinancialPlan();
     const pibResult = calculatePIB();
-    document.getElementById('pib-value').textContent = `PIB Per Capita: BRL ${formatCurrency(pibResult)}`;
+    if (pibResult === 0 || isNaN(pibResult)) {
+        document.getElementById('pib-value').textContent = 'R$ 0,00';
+    } 
+    else {
+        document.getElementById('pib-value').textContent = `PIB Per Capita: BRL ${formatCurrency(pibResult)}`;
+    }
     document.getElementById('pib-result').style.display = 'block';
 });
 
@@ -108,7 +117,7 @@ function calculateCompound() {
     // Calcular o investimento como 20% da renda familiar
     const investments = 0.2 * monthlyIncome;
 
-    let totalInvested = investments * months;
+    let totalInvested = investments + (monthlyAmount * months);
     let totalFinal = totalInvested;
 
     for (let i = 0; i < months; i++) {
@@ -120,11 +129,11 @@ function calculateCompound() {
     const netEarnings = grossEarnings - taxAmount;
 
     // Exibir resultados, substituindo NaN por 0
-    document.getElementById('total-invested-compound').textContent = formatCurrency(totalInvested);
-    document.getElementById('total-final-compound').textContent = isNaN(totalFinal) ? 'R$ 0' : formatCurrency(totalFinal);
-    document.getElementById('gross-earnings-compound').textContent = isNaN(grossEarnings) ? 'R$ 0' : formatCurrency(grossEarnings);
-    document.getElementById('tax-compound-result').textContent = isNaN(taxAmount) ? 'R$ 0' : formatCurrency(taxAmount);
-    document.getElementById('net-earnings-compound').textContent = isNaN(netEarnings) ? 'R$ 0' : formatCurrency(netEarnings);
+    document.getElementById('total-invested-compound').textContent = isNaN(totalInvested) ? 'R$ 0,00' : formatCurrency(totalInvested);
+    document.getElementById('total-final-compound').textContent = isNaN(totalFinal) ? 'R$ 0,00' : formatCurrency(totalFinal);
+    document.getElementById('gross-earnings-compound').textContent = isNaN(grossEarnings) ? 'R$ 0,00' : formatCurrency(grossEarnings);
+    document.getElementById('tax-compound-result').textContent = isNaN(taxAmount) ? 'R$ 0,00' : formatCurrency(taxAmount);
+    document.getElementById('net-earnings-compound').textContent = isNaN(netEarnings) ? 'R$ 0,00' : formatCurrency(netEarnings);
 }
 
 // Calculadora de Juros Simples 
@@ -139,11 +148,31 @@ function calculateSimple() {
     const totalInterest = finalAmount - investments;
 
     // Exibir resultados
-    document.getElementById('final-amount-simple').textContent = isNaN(finalAmount) ? 'R$ 0' : formatCurrency(finalAmount); // Verifica se finalAmount é NaN
-    document.getElementById('total-interest-simple').textContent = isNaN(totalInterest) ? 'R$ 0' : formatCurrency(totalInterest); // Verifica se totalInterest é NaN
+    document.getElementById('final-amount-simple').textContent = isNaN(finalAmount) ? 'R$ 0,00' : formatCurrency(finalAmount); // Verifica se finalAmount é NaN
+    document.getElementById('total-interest-simple').textContent = isNaN(totalInterest) ? 'R$ 0,00' : formatCurrency(totalInterest); // Verifica se totalInterest é NaN
+}
+
+function calculateSelic() {
+    const months = parseInt(document.getElementById('months-tesouro').value);
+    fetch('https://api.bcb.gov.br/dados/serie/bcdata.sgs.11/dados?formato=json')
+        .then(response => response.json())
+        .then(data => {
+            const monthlyAmount = parseFloat(document.getElementById('monthly-income').value);
+            const monthlyInvest = (0.2 * monthlyAmount);
+            const taxaSelicAtual = data[data.length - 1].valor;
+            const totalInvested = parseFloat(monthlyInvest * months);
+            const lucro = parseFloat(totalInvested - (totalInvested * taxaSelicAtual));
+            const retorno = ((monthlyInvest * taxaSelicAtual) * months);
+
+            document.getElementById('total-invested-selic').textContent = isNaN(totalInvested) ? 'R$ 0,00' : formatCurrency(totalInvested);
+            document.getElementById('total-retorno-selic').textContent = isNaN(retorno) ? 'R$ 0,00' : formatCurrency(retorno);
+            document.getElementById('total-lucro-selic').textContent = isNaN(lucro) ? 'R$ 0,00' : formatCurrency(lucro);
+        })
+        .catch(error => console.error('Ocorreu um erro ao buscar a taxa Selic:', error));
 }
 
 // Inicialização
 updateFinancialPlan();
 calculateCompound();
 calculateSimple();
+calculateSelic();
