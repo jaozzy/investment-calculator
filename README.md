@@ -2,5 +2,5 @@
 
 <h2>Disponível em:</h2>
 <pre>
-  <code>https://jaozzy.github.io/investiment-calculator/</code>
+  <code>https://jaozzy.github.io/investment-calculator/</code>
 </pre>
