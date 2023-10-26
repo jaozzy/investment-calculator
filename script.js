@@ -108,15 +108,14 @@ form.addEventListener('submit', function (event) {
 
 // Calculadora de Juros Compostos
 function calculateCompound() {
-    const monthlyAmount = parseFloat(document.getElementById('monthly-income').value);
-    const interestRate = parseFloat(document.getElementById('interest-rate-compound').value) / 100;
+    const interestRate = parseFloat(document.getElementById('interest-rate-compound').value);
     const months = parseInt(document.getElementById('months-compound').value);
     const taxRate = parseFloat(document.getElementById('tax-compound').value) / 100;
+    const monthlyValue = 0.2 * monthlyIncome;;
 
     // Calcular o investimento como 20% da renda familiar
-    const investments = 0.2 * monthlyIncome;
 
-    let totalInvested = investments + (monthlyAmount * months);
+    let totalInvested = (monthlyValue * months);
     let totalFinal = totalInvested;
 
     for (let i = 0; i < months; i++) {
