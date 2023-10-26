@@ -55,8 +55,7 @@ function updateFinancialPlan() {
     document.querySelector('#investimentos').textContent = isNaN(investments) ? 'R$ 0,00' : `${formatCurrency(investments)}`;
     document.getElementById('pib-value').textContent = `${formatCurrency(pib)}`;
     document.querySelector('#despesase').textContent = isNaN(essentialExpenses) ?  'R$ 0,00' : `${formatCurrency(essentialExpenses)}`;
-    document.querySelector('#despesasp').textContent = `${formatCurrency(personalExpenses)}`;
-    document.querySelector('#investimentos').textContent = `${formatCurrency(investments)}`;
+    document.querySelector('#despesasp').textContent =  isNaN(personalExpenses) ? 'R$ 0,00' : `${formatCurrency(personalExpenses)}`;
     document.getElementById('financial-plan').style.display = 'block';
 
     // Atualizar automaticamente os campos das calculadoras
