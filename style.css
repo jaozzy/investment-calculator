@@ -131,7 +131,7 @@
         border-bottom: 1px solid #ccc;
     }
 
-    .tesouro {
+        .tesouro {
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
@@ -165,7 +165,6 @@
         border-bottom: 1px solid #ccc;
     }
     
-
     github-link {
         display: block;
         margin-bottom: 10px;
