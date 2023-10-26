@@ -108,7 +108,7 @@ form.addEventListener('submit', function (event) {
 
 // Calculadora de Juros Compostos
 function calculateCompound() {
-    const interestRate = parseFloat(document.getElementById('interest-rate-compound').value);
+    const interestRate = parseFloat(document.getElementById('interest-rate-compound').value / 100);
     const months = parseInt(document.getElementById('months-compound').value);
     const taxRate = parseFloat(document.getElementById('tax-compound').value) / 100;
     const monthlyValue = 0.2 * monthlyIncome;;
