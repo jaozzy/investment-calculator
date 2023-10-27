@@ -159,7 +159,7 @@ function calculateSelic() {
             const monthlyInvest = (0.2 * monthlyAmount);
             const taxaSelicAtual = data[data.length - 1].valor;
             const totalInvested = parseFloat(monthlyInvest * months);
-            const lucro = parseFloat(totalInvested - (totalInvested * taxaSelicAtual));
+            const lucro = parseFloat(totalInvested + (totalInvested * taxaSelicAtual));
             const retorno = ((monthlyInvest * taxaSelicAtual) * months);
 
             document.getElementById('total-invested-selic').textContent = isNaN(totalInvested) ? 'R$ 0,00' : formatCurrency(totalInvested);
